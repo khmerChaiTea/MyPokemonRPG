@@ -1,9 +1,10 @@
 ﻿using MyPokemonRPG.Models.Moves;
 using System;
+using System.Text;
 
 namespace MyPokemonRPG.Models.Monsters
 {
-    public class BattleMonster : IIdentifiable
+    public class BattleMonster : IIdentifiable, INamed
     {
         // Pokemon Number
         public int Id { get; set; }
@@ -33,9 +34,9 @@ namespace MyPokemonRPG.Models.Monsters
         // --TODO: Add controls/restrictions for learning new moves.
         // -- NOTE: When learning a 5th move, it actually needs to replace
         // -- one of the existing 4 moves.
-        public virtual IList<BattleMove> MoveList { get; set; }
+        public virtual IList<BattleMove> MoveList { get; private set; }
 
-        public BattleMonster(int id, string name, MonsterType type,  int hp, int attack, int defense, int speed, IList<BattleMove> moveList)
+        public BattleMonster(int id, string name, MonsterType type, int hp, int attack, int defense, int speed)
         {
             Id = id;
             Name = name ?? throw new ArgumentNullException(nameof(name));
@@ -44,9 +45,23 @@ namespace MyPokemonRPG.Models.Monsters
             Attack = attack;
             Defense = defense;
             Speed = speed;
-            if (moveList == null || moveList.Count == 0)
-                moveList = new List<BattleMove> { new Struggle() };
-            MoveList = moveList;
+
+            MoveList = new List<BattleMove> { };
+        }
+
+        public string ListMoves()
+        {
+            if (MoveList == null)
+                throw new Exception("Move List is NULL. This shouldn't happen, ever.");
+
+            var sb = new StringBuilder();
+            var index = 0;
+            foreach (var move in MoveList)
+            {
+                sb.AppendLine($"{++index}. {move.Name}");
+            }
+
+            return sb.ToString();
         }
     }
 }

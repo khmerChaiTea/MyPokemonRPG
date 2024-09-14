@@ -8,9 +8,14 @@ namespace MyPokemonRPG.Models.Players
     {
         public string Name { get; set; }
 
+        public BasePlayer(string name)
+        {  
+            Name = name;
+        }
+
         // Current party of pokemon. Max of 6 and need controls/restrictions
         // for swapping new pokemon with existing.
-        public virtual IList<BattleMonster> Party { get; set; }
+        public virtual IList<BattleMonster>? Party { get; set; }
 
         public virtual string ListParty()
         {
@@ -24,5 +29,7 @@ namespace MyPokemonRPG.Models.Players
             }
             return sb.ToString();
         }
+
+        public abstract void StartTurn();
     }
 }

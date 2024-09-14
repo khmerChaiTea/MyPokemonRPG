@@ -11,6 +11,7 @@
     <ProjectReference Include="..\MyPokemonRPG.BattleSystem\MyPokemonRPG.BattleSystem.csproj" />
     <ProjectReference Include="..\MyPokemonRPG.Models\MyPokemonRPG.Models.csproj" />
     <ProjectReference Include="..\MyPokemonRPG.Repositories\MyPokemonRPG.Repositories.csproj" />
+    <ProjectReference Include="..\MyPokemonRPG.Services\MyPokemonRPG.Services.csproj" />
   </ItemGroup>
 
 </Project>

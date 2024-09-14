@@ -4,9 +4,14 @@ namespace MyPokemonRPG.Models.Players
 {
     public class COMPlayer : BasePlayer
     {
-        public COMPlayer(string name)
+        public COMPlayer(string name) : base(name)
         {
-            Name = name;
+            
+        }
+
+        public override void StartTurn()
+        {
+            
         }
     }
 }

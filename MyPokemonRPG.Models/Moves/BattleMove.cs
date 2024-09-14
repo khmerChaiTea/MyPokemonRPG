@@ -2,7 +2,7 @@
 
 namespace MyPokemonRPG.Models.Moves
 {
-    public class BattleMove : IIdentifiable
+    public class BattleMove : IIdentifiable, INamed
     {
         public int Id { get; set; }
         public string Name { get; set; }
