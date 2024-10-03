@@ -37,5 +37,16 @@ namespace MyPokemonRPG.Repositories
             Items.Add(item);
             return item.Id;
         }
+
+        public bool Delete(T item)
+            => Delete(item.Id);
+
+        public bool Delete(int id)
+        {
+            var item = Items.FirstOrDefault(i => i.Id == id);
+            if (item != null)
+                return Items.Remove(item);
+            return false;
+        }
     }
 }

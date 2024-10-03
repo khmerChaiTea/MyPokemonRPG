@@ -10,7 +10,10 @@ namespace MyPokemonRPG.Repositories
         IList<T> GetAll();
 
         // Save an item by Create or Update if allowUpdate is true.
-        // Otherwise it will return an error if the item already exists.
+        // Otherwise it will return -1 if the item already exists.
         int Save(T item, bool allowUpdate = true);
+
+        bool Delete(T item);
+        bool Delete(int id);
     }
 }
